@@ -44,6 +44,10 @@
   width: 50%;
 }
 
+.mobile-footer {
+  display: none;
+}
+
 @media only screen and (max-width: 600px) {
   .crossword-wrapper {
     flex-direction: column;
@@ -54,6 +58,29 @@
   }
   .direction {
     width: 100%;
+    display: none;
+  }
+
+  .mobile-footer {
+    width: 100%;
+    position:absolute;
+    left:0px;
+    bottom:0px;
+    height: auto;
+    margin: auto;
+    overflow: hidden;
+    background:#2E2E2E;
+    text-align: center;
+    color: #ffffff;
+    display: inherit;
+  }
+
+  .mobile-clue {
+    margin: 8px;
+  }
+
+  .current-clue {
+    visibility: hidden;
   }
 }
 

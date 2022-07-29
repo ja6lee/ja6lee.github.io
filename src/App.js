@@ -32,6 +32,13 @@ function App() {
       setCrosswords(crosswords);
   }, []);
 
+  const onSolvePuzzle = useCallback(() => {
+      if (crosswordProvider && crosswordProvider.current) {
+          crosswordProvider.current.fillAllAnswers();
+      }
+
+  }, [crosswordProvider]);
+
   const onCrosswordCompleted = useCallback(() => {
       // TODO: this
       console.log("Puzzle completed");
@@ -79,6 +86,12 @@ function App() {
                   <Toolbar className="toolbar">
                       Heffe's Crosswords
                       <div className="right-nav-bar">
+                          <Button
+                              onClick={onSolvePuzzle}
+                              variant="contained"
+                          >
+                              Solve
+                          </Button>
                           <Button
                               onClick={onReset}
                               variant="contained"
@@ -157,7 +170,13 @@ function App() {
                       </CrosswordProvider>
                   </div>
           </div>
-
+          {currentClue &&
+              <footer className="mobile-footer" role="contentinfo">
+                  <div className="mobile-clue">
+                      {currentClue}
+                  </div>
+              </footer>
+          }
       </div>
   );
 }
